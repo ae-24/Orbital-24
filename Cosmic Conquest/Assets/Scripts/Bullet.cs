@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float bulletSpeed = 20f;
     Rigidbody2D myRigidbody;
     PlayerMovement player;
-    float xSpeed;
+    float xSpeed; // Horizontal speed and direction of bullet
 
     void Start()
     {
@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
         myRigidbody.velocity = new Vector2 (xSpeed, 0f);
     }
 
+    //On collision with enemies, destroy the enemy, then the bullet. Else, on any collision destroy the bullet
     void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.tag == "Enemy") {

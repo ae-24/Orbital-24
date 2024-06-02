@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+
     float gravityScaleAtStart;
+    bool isAlive = true;
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -20,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     BoxCollider2D myFeetCollider;
     SpriteRenderer mySpriteRenderer;
 
-    bool isAlive = true;
 
     void Start()
     {
@@ -97,11 +98,13 @@ public class PlayerMovement : MonoBehaviour
         }       
     }
 
+    //Updates isAlive to determine player mortality upon player collision with objects
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Enemy") {
             isAlive = false;
         }
     }
+
     void Die() 
     {
         if(myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards"))) {

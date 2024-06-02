@@ -8,6 +8,8 @@ public class LevelExit : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 1f;
 
+
+    //On player reaching exit of the level, loads in the next level after a delay
     void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.tag == "Player") {

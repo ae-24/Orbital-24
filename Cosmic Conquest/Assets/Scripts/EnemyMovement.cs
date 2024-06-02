@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidbody;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -16,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
         myRigidbody.velocity = new Vector2 (moveSpeed, 0f);
     }
 
+    //On collision with wall, flips sprite of enemy based on direction of travel
     void OnTriggerExit2D(Collider2D other)
     {
         moveSpeed = -moveSpeed;

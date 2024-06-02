@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int playerLives = 3;
+    [SerializeField] int playerLives = 3; // Number of player lives
+
     void Awake()
     {
+        //Ensures that there is at most one game session running to keep track of player data
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -17,6 +19,8 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    
+    //Resets game session when player runs out of lives
     public void ProcessPlayerDeath()
     {
         if(playerLives > 1) {
@@ -26,6 +30,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    //Reduces player lives count when player dies, and resets them to the start of their current level
     void TakeLife()
     {
         playerLives -= 1;
@@ -33,6 +38,7 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
+    //Destroys current game session and reinitializes to the first level
     void ResetGameSession()
     {
         SceneManager.LoadScene(0);
