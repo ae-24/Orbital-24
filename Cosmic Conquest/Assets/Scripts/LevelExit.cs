@@ -9,6 +9,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] float levelLoadDelay = 1f;
 
 
+
     //On player reaching exit of the level, loads in the next level after a delay
     void OnTriggerEnter2D(Collider2D other) 
     {
@@ -19,6 +20,7 @@ public class LevelExit : MonoBehaviour
 
     IEnumerator LoadNextLevel() 
     {
+
         yield return new WaitForSecondsRealtime(levelLoadDelay);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
