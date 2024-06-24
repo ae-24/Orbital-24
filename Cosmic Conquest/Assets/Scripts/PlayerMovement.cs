@@ -45,11 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFire(InputValue values) 
     {
-        if(!PauseMenu.isPaused)
-        {
-            if(!isAlive){ return; }
-            Instantiate(bullet, gun.position, transform.rotation);
-        }
+        if(!isAlive){ return; }
+        Instantiate(bullet, gun.position, transform.rotation);
     }
 
     void OnMove(InputValue value)
