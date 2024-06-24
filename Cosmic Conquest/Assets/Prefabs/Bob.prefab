@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe9657dc04acd147ad82963a40fe7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
-  jumpSpeed: 24
+  runSpeed: 18
+  jumpSpeed: 20
   climbSpeed: 10
   deathKick: {x: 24, y: 24}
   bullet: {fileID: 1115646412592485548, guid: 6120bd51c3f82e742847fb39eb5a3b12, type: 3}
