@@ -42199,6 +42199,63 @@ PolygonCollider2D:
       - {x: -17.524412, y: -18.64866}
       - {x: 40.385616, y: -18.154953}
       - {x: 40.64239, y: 23.227694}
+--- !u!1001 &689145597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2071083
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.95088
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.014357159
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185795, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030962401896185805, guid: 11e9b187802047f488feae720e617e62, type: 3}
+      propertyPath: m_Name
+      value: SFX AudioSource
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11e9b187802047f488feae720e617e62, type: 3}
 --- !u!1001 &781765695
 PrefabInstance:
   m_ObjectHideFlags: 0

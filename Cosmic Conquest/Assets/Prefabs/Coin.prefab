@@ -138,6 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPickupSFX: {fileID: 8300000, guid: dc2469f82a5f3e54d90c0d53970224fd, type: 3}
+<<<<<<< Updated upstream
+=======
+  audioVolume: 1
+  pointsForCoinPickup: 100
+>>>>>>> Stashed changes
 --- !u!82 &5179246480779005797
 AudioSource:
   m_ObjectHideFlags: 0
