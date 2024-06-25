@@ -5,26 +5,17 @@ using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour
 {
-    public int health;
-    public int maxHealth;
+    int health;
+    int maxHealth;
 
     public Sprite emptyHeart;
     public Sprite fullHeart;
     public Image[] hearts;
 
-    public GameSession gameSession;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        health = gameSession.playerLives;
-        maxHealth = 3;
+        health = FindObjectOfType<GameSession>().playerLives;
+        //maxHealth = 3;
         
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -36,7 +27,7 @@ public class HealthDisplay : MonoBehaviour
             {
                 hearts[i].sprite = emptyHeart;
             }
-            if (i < maxHealth)
+            if (i < 3)
             {
                 hearts[i].enabled = true;
             }
