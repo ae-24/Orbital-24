@@ -195,7 +195,7 @@ MonoBehaviour:
   jumpSpeed: 24
   climbSpeed: 10
   deathKick: {x: 24, y: 24}
-  bullet: {fileID: 1115646412592485548, guid: 6120bd51c3f82e742847fb39eb5a3b12, type: 3}
+  bullet: {fileID: 1115646412592485548, guid: da95bf2ef2f32c84d85a9c870460f438, type: 3}
   gun: {fileID: 8817724894969046373}
 --- !u!61 &1820121479
 BoxCollider2D:
@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6053872374205572758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0.348, y: -0.071, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

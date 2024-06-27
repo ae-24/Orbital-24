@@ -47,15 +47,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!PauseMenu.isPaused) 
         {
-            if(!isAlive){ return; }
-            Instantiate(bullet, gun.position, transform.rotation);
+            if(!isAlive){ return;}
+            myAnimator.SetTrigger("Shooting");
+            Invoke("ShootBullet", 0.3f);          
         }
+    }
+
+    void ShootBullet()
+    {
+         Instantiate(bullet, gun.position, transform.rotation);
+         myAnimator.SetTrigger("notShooting");
     }
 
 
     void OnMove(InputValue value)
     {
-        if(!isAlive){ return; }
+        if(!isAlive){ return;}
         moveInput = value.Get<Vector2>();
     } 
 
