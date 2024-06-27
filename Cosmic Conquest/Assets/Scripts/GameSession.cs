@@ -10,8 +10,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] public int playerLives = 3; // Number of player lives
     [SerializeField] public int score = 0;
 
-    //[SerializeField] TextMeshProUGUI livesText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI scoreText;
 
 
     void Awake()
@@ -28,7 +27,6 @@ public class GameSession : MonoBehaviour
 
     void Start() 
     {
-        //livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
     
@@ -42,6 +40,11 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    public void UpdateScore(int value)
+    {
+        score = value;
+        scoreText.text = score.ToString();
+    }
     public void AddToScore(int pointsToAdd) 
     {
         score += pointsToAdd;
@@ -54,7 +57,6 @@ public class GameSession : MonoBehaviour
         playerLives -= 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
-        //livesText.text = playerLives.ToString();
     }
 
     //Destroys current game session and reinitializes to the first level
