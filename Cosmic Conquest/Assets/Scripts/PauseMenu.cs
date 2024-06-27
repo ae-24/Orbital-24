@@ -47,9 +47,11 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        gameSession.UpdateScore(0);
+        // gameSession.UpdateScore(0);
+        
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     public void QuitGame()
