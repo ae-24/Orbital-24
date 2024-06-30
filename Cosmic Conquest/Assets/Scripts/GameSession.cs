@@ -23,10 +23,12 @@ public class GameSession : MonoBehaviour
         } else {
             DontDestroyOnLoad(gameObject);
         }
+        
     }
 
     void Start() 
     {
+        // scoreText.enabled = true;
         scoreText.text = score.ToString();
     }
     
@@ -64,6 +66,13 @@ public class GameSession : MonoBehaviour
     {
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(1);
+        Destroy(gameObject);
+    }
+
+    public void GoToMainMenu()
+    {
+        FindObjectOfType<ScenePersist>().ResetScenePersist();
+        SceneManager.LoadSceneAsync(0);
         Destroy(gameObject);
     }
 }
