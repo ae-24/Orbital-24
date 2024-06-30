@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6080509448003071289}
+  gameSession: {fileID: 0}
 --- !u!1 &6080509448638073684
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +942,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -867.1, y: 465.00003}
-  m_SizeDelta: {x: 156.0076, y: 174.6768}
+  m_SizeDelta: {x: 156.00757, y: 174.67682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6080509449432476740
 CanvasRenderer:
