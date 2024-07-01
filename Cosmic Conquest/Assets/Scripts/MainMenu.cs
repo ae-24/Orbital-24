@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
     Debug.Log(this.name+" : "+this.GetType()+" : "+System.Reflection.MethodBase.GetCurrentMethod().Name); 
 //endif
 //if (UNITY_EDITOR)
-    UnityEditor.EditorApplication.isPlaying = false;
+    //UnityEditor.EditorApplication.isPlaying = false;
 //elif (UNITY_STANDALONE) 
     Application.Quit();
 //elif (UNITY_WEBGL)
