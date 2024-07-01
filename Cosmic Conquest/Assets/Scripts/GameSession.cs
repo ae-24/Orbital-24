@@ -64,7 +64,14 @@ public class GameSession : MonoBehaviour
     {
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex - 1);
+        if(currentSceneIndex == 1) 
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentSceneIndex - 1);
+        }
         Destroy(gameObject);
     }
 }
