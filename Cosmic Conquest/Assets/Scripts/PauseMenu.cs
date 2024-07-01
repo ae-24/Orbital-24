@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     [SerializeField] GameSession gameSession;
     public static bool isPaused;
+
+    // private int currentSceneIndex = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,9 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
+        //currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
+        FindObjectOfType<GameSession>().scoreText.enabled = false;
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
         Destroy(gameObject);

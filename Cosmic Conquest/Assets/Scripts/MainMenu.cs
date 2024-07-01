@@ -6,9 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    // private int sceneToContinue;
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        // sceneToContinue = PlayerPrefs.GetInt("SavedScene");
+        
+        // if(sceneToContinue != 0) 
+        // {
+        //     SceneManager.LoadSceneAsync(sceneToContinue);
+        // }
+        // else 
+        // {
+            SceneManager.LoadSceneAsync(1);
+            FindObjectOfType<GameSession>().playerLives = 3;
+            FindObjectOfType<GameSession>().score = 0;
+            FindObjectOfType<GameSession>().scoreText.enabled = true;
+            FindObjectOfType<GameSession>().scoreText.text = FindObjectOfType<GameSession>().score.ToString();
+        // }
+        
     }
 
     public void Quit() 
