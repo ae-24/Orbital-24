@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
     SpriteRenderer mySpriteRenderer;
-
+    //public Vector3 playerPos;
 
     void Start()
     {
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
+        //transform.position = playerPos;
     }
 
     void OnFire(InputValue values) 

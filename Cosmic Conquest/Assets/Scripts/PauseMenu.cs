@@ -9,7 +9,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameSession gameSession;
     public static bool isPaused;
 
-    // private int currentSceneIndex = 1;
+    private int currentSceneIndex;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +50,12 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        //currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        //PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
+        PlayerPrefs.SetInt("PlayerLives", FindObjectOfType<GameSession>().playerLives);
+        PlayerPrefs.SetInt("ScoreValue", FindObjectOfType<GameSession>().score);
+        //PlayerPrefs.SetFloat("PlayerPosX", FindObjectOfType<PlayerMovement>().transform.position.x);
+        //PlayerPrefs.SetFloat("PlayerPosY", FindObjectOfType<PlayerMovement>().transform.position.y);
         FindObjectOfType<GameSession>().scoreText.enabled = false;
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
@@ -59,15 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit() 
     {
-//if (UNITY_EDITOR || DEVELOPMENT_BUILD)
-    //Debug.Log(this.name+" : "+this.GetType()+" : "+System.Reflection.MethodBase.GetCurrentMethod().Name); 
-//endif
-//if (UNITY_EDITOR)
-    //UnityEditor.EditorApplication.isPlaying = false;
-//elif (UNITY_STANDALONE) 
-    Application.Quit();
-//elif (UNITY_WEBGL)
-    Application.OpenURL("about:blank");
-//endif
-  }
+        Application.Quit();
+        Application.OpenURL("about:blank");
+    }
 }
