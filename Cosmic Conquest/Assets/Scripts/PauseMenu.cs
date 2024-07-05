@@ -50,12 +50,23 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
+        PlayerPrefs.SetInt("playerStarted", 1);
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         PlayerPrefs.SetInt("PlayerLives", FindObjectOfType<GameSession>().playerLives);
         PlayerPrefs.SetInt("ScoreValue", FindObjectOfType<GameSession>().score);
-        //PlayerPrefs.SetFloat("PlayerPosX", FindObjectOfType<PlayerMovement>().transform.position.x);
-        //PlayerPrefs.SetFloat("PlayerPosY", FindObjectOfType<PlayerMovement>().transform.position.y);
+        
+        PlayerPos playerPos = FindObjectOfType<PlayerPos>();
+        if (playerPos != null)
+        {
+            playerPos.SavePos();
+        }
+        else
+        {
+            Debug.LogError("PlayerPos not found!");
+        }
+        
+        PlayerPrefs.Save();
         FindObjectOfType<GameSession>().scoreText.enabled = false;
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] public int playerLives = 3; // Number of player lives
-    [SerializeField] public int score = 0;
+    [SerializeField] public volatile int playerLives = 3; // Number of player lives
+    [SerializeField] public volatile int score = 0;
 
     [SerializeField] public TextMeshProUGUI scoreText;
 
