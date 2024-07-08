@@ -93,17 +93,11 @@ public class GameManager : MonoBehaviour
 
             // Wait until the PlayerPos object is available in the scene
             PlayerPos playerPos = null;
-            int attempts = 0;
-            Debug.Log("playerPos and attempts initiated.");
-            while (playerPos == null && attempts < 20) // Increase attempts count
+            Debug.Log("Looking for PlayerPos.");
+            while (playerPos == null)
             {
-                Debug.Log("In while loop.");
-                yield return new WaitForSeconds(0.1f); // Increase wait time
-                Debug.Log("waiting...");
+                yield return null; // Wait for the next frame to ensure all objects are initialized
                 playerPos = FindObjectOfType<PlayerPos>();
-                Debug.Log("set playerPos");
-                attempts++;
-                Debug.Log("Attempting to find PlayerPos: attempt " + attempts);
             }
 
             if (playerPos != null)
@@ -120,6 +114,16 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("GameSession not found!");
         }
+    }
+
+    public void SaveGame()
+    {
+        PlayerPrefs.SetInt("playerStarted", 1);
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("PlayerLives", FindObjectOfType<GameSession>().playerLives);
+        PlayerPrefs.SetInt("ScoreValue", FindObjectOfType<GameSession>().score);
+        FindObjectOfType<PlayerPos>().SavePos();
+        PlayerPrefs.Save();
     }
 
     public void Quit()
