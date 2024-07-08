@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        isPaused = false;
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("playerStarted", 1);
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

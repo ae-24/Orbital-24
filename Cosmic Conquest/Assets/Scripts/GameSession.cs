@@ -62,6 +62,14 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
+    public void AddHealth()
+    {
+        if(playerLives < 3)
+        {
+        playerLives += 1;
+        }
+    }
+
     // Destroys current game session and reinitializes to the first level
     void ResetGameSession()
     {
