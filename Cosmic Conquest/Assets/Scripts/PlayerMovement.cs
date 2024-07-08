@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isAlive){ return;}
         moveInput = value.Get<Vector2>();
+
     } 
 
     void OnJump(InputValue value) 
