@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +14,7 @@ public class GameSession : MonoBehaviour
 
     void Awake()
     {
-        // Ensures that there is at most one game session running to keep track of player data
+        //Ensures that there is at most one game session running to keep track of player data
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -29,7 +31,7 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    // Resets game session when player runs out of lives
+    //Resets game session when player runs out of lives
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
@@ -38,6 +40,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+            HighScoreManager.Instance.CheckHighScore(score);
             ResetGameSession();
         }
     }
@@ -54,7 +57,7 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    // Reduces player lives count when player dies, and resets them to the start of their current level
+    //Reduces player lives count when player dies, and resets them to the start of their current level
     void TakeLife()
     {
         playerLives -= 1;
@@ -66,13 +69,13 @@ public class GameSession : MonoBehaviour
     {
         if(playerLives < 3)
         {
-        playerLives += 1;
+            playerLives += 1;
         }
     }
-
-    // Destroys current game session and reinitializes to the first level
+    //Destroys current game session and reinitializes to the first level
     void ResetGameSession()
     {
+        HighScoreManager.Instance.CheckHighScore(score);
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         Collectible.ResetAllCollectibles(); // Reset all collectibles
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

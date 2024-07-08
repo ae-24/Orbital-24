@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
+        HighScoreManager.Instance.CheckHighScore(gameSession.score);
         PlayerPrefs.SetInt("playerStarted", 1);
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);

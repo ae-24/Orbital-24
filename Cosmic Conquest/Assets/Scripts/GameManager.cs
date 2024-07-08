@@ -24,11 +24,20 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("PlayGame button pressed.");
-        PlayerPrefs.DeleteAll();
+
+        // Delete specific PlayerPrefs keys related to the game session
+        PlayerPrefs.DeleteKey("playerStarted");
+        PlayerPrefs.DeleteKey("SavedScene");
+        PlayerPrefs.DeleteKey("PlayerLives");
+        PlayerPrefs.DeleteKey("ScoreValue");
+
+        // Optionally, reset other game-related data here
+
         SceneManager.LoadScene(1);
 
         StartCoroutine(InitializeGameSession());
     }
+
 
     private IEnumerator InitializeGameSession()
     {
