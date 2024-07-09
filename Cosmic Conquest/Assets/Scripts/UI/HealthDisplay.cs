@@ -6,17 +6,38 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     int health;
-    int maxHealth;
+    int maxHealth = 3; // Assuming max health is always 3
 
     public Sprite emptyHeart;
     public Sprite fullHeart;
     public Image[] hearts;
 
-    void Update()
+    void Start()
     {
-        health = FindObjectOfType<GameSession>().playerLives;
-        //maxHealth = 3;
-        
+        StartCoroutine(UpdateHealth());
+    }
+
+    IEnumerator UpdateHealth()
+    {
+        while (true)
+        {
+            GameSession gameSession = FindObjectOfType<GameSession>();
+            if (gameSession != null)
+            {
+                health = gameSession.playerLives;
+                UpdateHearts();
+            }
+            else
+            {
+                Debug.LogWarning("GameSession not found!");
+            }
+
+            yield return new WaitForSeconds(0.5f); // Update health every 0.5 seconds
+        }
+    }
+
+    void UpdateHearts()
+    {
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
@@ -27,7 +48,7 @@ public class HealthDisplay : MonoBehaviour
             {
                 hearts[i].sprite = emptyHeart;
             }
-            if (i < 3)
+            if (i < maxHealth)
             {
                 hearts[i].enabled = true;
             }

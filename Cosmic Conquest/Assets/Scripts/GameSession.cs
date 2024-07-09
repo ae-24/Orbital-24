@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,7 +13,7 @@ public class GameSession : MonoBehaviour
 
     void Awake()
     {
-        //Ensures that there is at most one game session running to keep track of player data
+        // Ensures that there is at most one game session running to keep track of player data
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -31,7 +30,7 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    //Resets game session when player runs out of lives
+    // Resets game session when player runs out of lives
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
@@ -57,7 +56,7 @@ public class GameSession : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    //Reduces player lives count when player dies, and resets them to the start of their current level
+    // Reduces player lives count when player dies, and resets them to the start of their current level
     void TakeLife()
     {
         playerLives -= 1;
@@ -67,26 +66,23 @@ public class GameSession : MonoBehaviour
 
     public void AddHealth()
     {
-        if(playerLives < 3)
+        if (playerLives < 3)
         {
             playerLives += 1;
         }
     }
-    //Destroys current game session and reinitializes to the first level
+
+    // Destroys current game session and reinitializes to the first level
     void ResetGameSession()
     {
         HighScoreManager.Instance.CheckHighScore(score);
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         Collectible.ResetAllCollectibles(); // Reset all collectibles
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex == 1)
-        {
-            SceneManager.LoadSceneAsync(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(currentSceneIndex - 1);
-        }
+        EnemyMovement.ResetAllEnemies(); // Reset enemy IDs
+        PlayerPrefs.DeleteKey("SavedScene");
+        PlayerPrefs.DeleteKey("PlayerLives");
+        PlayerPrefs.DeleteKey("ScoreValue");
+        SceneManager.LoadSceneAsync(1);
         Destroy(gameObject);
     }
 }

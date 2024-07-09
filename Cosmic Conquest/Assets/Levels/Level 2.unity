@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 1862fffd-ba66-44f4-b303-4a35a06215b1
+  collectibleID: bba6740a-f942-446a-9fe7-ddebfa6697e5
 --- !u!1 &179949531
 GameObject:
   m_ObjectHideFlags: 0
@@ -20511,6 +20511,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+      propertyPath: enemyID
+      value: 6f49c0ac-9970-407d-aca9-232338e240b1
+      objectReference: {fileID: 0}
     - target: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_Name
       value: Goober (1)
@@ -20683,7 +20687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 569d7a7c-0f62-4b0a-a35d-c4eebf6cec43
+  collectibleID: f91e9b90-8462-4eac-9412-99ffd002d242
 --- !u!1001 &914679479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20758,7 +20762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: dc02cf70-e9cc-4b56-a4f7-f3112b68ff7a
+  collectibleID: 9c94d90d-5177-450e-9170-ead90915c09c
 --- !u!1 &955077820
 GameObject:
   m_ObjectHideFlags: 0
@@ -29339,7 +29343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 41a90e0a-d2e2-4add-b8d6-01ba302f2006
+  collectibleID: ecaeab36-edcb-4a3d-bcf8-d3e4517a91f3
 --- !u!4 &1083516471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3714438320910507318, guid: 012c58b9d410a524099fb2ca4433955a, type: 3}
@@ -29357,7 +29361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 8149dfbe-7c66-40d6-9c41-c3ffccc066d7
+  collectibleID: cf47ca4f-fe6b-42c2-9851-0e99b31f35d4
 --- !u!1 &1092306490
 GameObject:
   m_ObjectHideFlags: 0
@@ -29905,7 +29909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: da3e3926-04d1-4166-a649-6121409e39ff
+  collectibleID: b74e8b09-224b-4b84-bffc-83ffc50ff513
 --- !u!1001 &1340140183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30244,7 +30248,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: b4b659eb-7e94-4524-b25f-f1e20b7fbbf6
+  collectibleID: df5f439f-dbc6-4783-a917-647b7256a84a
+--- !u!1 &1576946591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+  m_PrefabInstance: {fileID: 2324183036781680942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1576946592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576946591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115655c19b7981a4885599cf001b63ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  enemyID: 5734866a-8be2-4ccf-9df3-79bcffa9cfe2
 --- !u!1 &1619862440
 GameObject:
   m_ObjectHideFlags: 0
@@ -30369,7 +30392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: b23da53e-f1e8-4774-91d1-a3438303299a
+  collectibleID: 9eef7c1f-59c2-44d4-9375-6cc82550f253
 --- !u!1 &1641133159
 GameObject:
   m_ObjectHideFlags: 0
@@ -30417,7 +30440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 24f92052-4689-4694-a202-fb5200cac253
+  collectibleID: f4d84526-2a36-4cff-89e2-7625f1ee0d1c
 --- !u!114 &1641133162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30520,7 +30543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: d583c92a-d642-41e8-9652-6c647aa4fcf1
+  collectibleID: fee2e234-7d35-40e8-8241-a889bc31853b
 --- !u!1001 &1679489675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30595,7 +30618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: f0f06fee-5ad5-4532-a58f-a06e1ad34495
+  collectibleID: 21e2ab44-6a92-47fb-bb47-297690b45690
 --- !u!4 &1813851684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3714438320910507318, guid: 012c58b9d410a524099fb2ca4433955a, type: 3}
@@ -30613,7 +30636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: dbcba917-affd-4e18-b448-9bfa8c233820
+  collectibleID: 6a900085-b023-425d-bec4-62d0c3b461d8
 --- !u!95 &1820121477 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3301308560079041657, guid: 4bb0d9c6e1cdd7a42ab5f8e252f8ea3b, type: 3}
@@ -30703,7 +30726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: b6f4ea9e-bc34-4313-863c-d228d7c40971
+  collectibleID: d98b37d8-8dca-4e1c-80a6-56ebc2a3e9cf
 --- !u!1001 &1857259512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30914,7 +30937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: f298c952-7250-4889-88e0-601778b77715
+  collectibleID: 69518381-4de1-4b42-ae17-8f7c24c32b7e
 --- !u!1001 &1955903095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30965,6 +30988,10 @@ PrefabInstance:
     - target: {fileID: 2324183036960598120, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+      propertyPath: enemyID
+      value: 77a58cdd-56a5-48aa-aeef-f5e58c36a296
       objectReference: {fileID: 0}
     - target: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_Name
@@ -31022,6 +31049,10 @@ PrefabInstance:
     - target: {fileID: 2324183036960598120, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+      propertyPath: enemyID
+      value: e0bffebf-5304-44c9-b890-887694b788b5
       objectReference: {fileID: 0}
     - target: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_Name
@@ -31180,11 +31211,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+      propertyPath: enemyID
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_Name
       value: Goober
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
 --- !u!1001 &3301308559506137912
 PrefabInstance:

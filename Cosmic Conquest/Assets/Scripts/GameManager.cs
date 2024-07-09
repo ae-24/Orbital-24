@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteKey("SavedScene");
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("ScoreValue");
+        Collectible.ResetAllCollectibles(); // Reset all collectibles
+        EnemyMovement.ResetAllEnemies(); // Reset enemy IDs
 
         // Optionally, reset other game-related data here
 
@@ -37,7 +39,6 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(InitializeGameSession());
     }
-
 
     private IEnumerator InitializeGameSession()
     {

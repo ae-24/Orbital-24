@@ -18,14 +18,19 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.localScale = new Vector2 (Mathf.Sign(player.transform.localScale.x), 1f);
-        myRigidbody.velocity = new Vector2 (xSpeed, 0f);
+        transform.localScale = new Vector2(Mathf.Sign(player.transform.localScale.x), 1f);
+        myRigidbody.velocity = new Vector2(xSpeed, 0f);
     }
 
-    //On collision with enemies, destroy the enemy, then the bullet. Else, on any collision destroy the bullet
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Enemy") {
+        if (other.tag == "Enemy")
+        {
+            EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+            if (enemy != null)
+            {
+                enemy.SaveState();
+            }
             Destroy(other.gameObject);
         }
         Destroy(gameObject);

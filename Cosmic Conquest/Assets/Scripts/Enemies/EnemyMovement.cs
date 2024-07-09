@@ -6,18 +6,19 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidbody;
+    public string enemyID;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        LoadState();
     }
 
     void Update()
     {
-        myRigidbody.velocity = new Vector2 (moveSpeed, 0f);
+        myRigidbody.velocity = new Vector2(moveSpeed, 0f);
     }
 
-    //On collision with wall, flips sprite of enemy based on direction of travel
     void OnTriggerExit2D(Collider2D other)
     {
         moveSpeed = -moveSpeed;
@@ -27,5 +28,24 @@ public class EnemyMovement : MonoBehaviour
     void FlipEnemyFacing()
     {
         transform.localScale = new Vector2(-Mathf.Sign(myRigidbody.velocity.x), 1f);
+    }
+
+    public void SaveState()
+    {
+        PlayerPrefs.SetInt(enemyID, 1);
+        PlayerPrefs.Save();
+    }
+
+    void LoadState()
+    {
+        if (PlayerPrefs.GetInt(enemyID, 0) == 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public static void ResetAllEnemies()
+    {
+        EnemyManager.Instance?.ResetAllEnemies();
     }
 }
