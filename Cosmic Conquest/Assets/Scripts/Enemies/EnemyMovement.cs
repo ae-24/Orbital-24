@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] int health;
     Rigidbody2D myRigidbody;
     public string enemyID;
+
 
     void Start()
     {
@@ -47,5 +49,14 @@ public class EnemyMovement : MonoBehaviour
     public static void ResetAllEnemies()
     {
         EnemyManager.Instance?.ResetAllEnemies();
+    }
+
+    public void TakeDamage(int damage) 
+    {
+        health -= damage;
+        Debug.Log("damage TAKEN");
+        if(health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }
