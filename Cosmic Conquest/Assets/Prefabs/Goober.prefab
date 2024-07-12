@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2324183036960598122}
   - component: {fileID: 2324183036960598125}
   - component: {fileID: 2324183036960598124}
+  - component: {fileID: 2324183036960598121}
   - component: {fileID: 2324183036960598118}
-  - component: {fileID: 1576946592}
   m_Layer: 11
   m_Name: Goober
   m_TagString: Enemy
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1846012887
-  m_SortingLayer: 8
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -1314752636, guid: 43d27c8e290d5d64db844425b00e9e61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -147,6 +147,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2324183036960598121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324183036960598127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115655c19b7981a4885599cf001b63ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!61 &2324183036960598118
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,18 +186,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04161215, y: 0.5296929}
   m_EdgeRadius: 0
---- !u!114 &1576946592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2324183036960598127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115655c19b7981a4885599cf001b63ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  health: 3
-  enemyID: 5734866a-8be2-4ccf-9df3-79bcffa9cfe2
