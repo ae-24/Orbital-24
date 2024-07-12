@@ -31,7 +31,8 @@ public class Bullet : MonoBehaviour
             {
                 enemy.SaveState();
             }
-            Destroy(other.gameObject);
+            enemy.TakeDamage(1);
+            //Destroy(other.gameObject);
         }
         Destroy(gameObject);
     }

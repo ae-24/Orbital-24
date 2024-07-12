@@ -30249,25 +30249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleID: df5f439f-dbc6-4783-a917-647b7256a84a
---- !u!1 &1576946591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
-  m_PrefabInstance: {fileID: 2324183036781680942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1576946592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576946591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115655c19b7981a4885599cf001b63ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  enemyID: 5734866a-8be2-4ccf-9df3-79bcffa9cfe2
 --- !u!1 &1619862440
 GameObject:
   m_ObjectHideFlags: 0
@@ -31211,16 +31192,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
-      propertyPath: enemyID
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2324183036960598127, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
       propertyPath: m_Name
       value: Goober
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2324183036960598121, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07a94377da4a7344f8a066f31212bb2c, type: 3}
 --- !u!1001 &3301308559506137912
 PrefabInstance:
