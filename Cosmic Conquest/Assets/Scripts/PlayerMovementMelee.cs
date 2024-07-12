@@ -10,16 +10,16 @@ public class PlayerMovementMelee : MonoBehaviour
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 24f;
     [SerializeField] float climbSpeed = 10f;
-    [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
+    [SerializeField] Vector2 deathKick = new Vector2 (0f, 0f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
 
-    public Transform attackPos;
-    public float attackRange;
-    public LayerMask whatIsEnemies;
-    public int damage;
-
-    public float startTimeBetweeenAttack;
+    [SerializeField] Transform attackPos;
+    [SerializeField] float attackRange;
+    [SerializeField] LayerMask whatIsEnemies;
+    [SerializeField] int damage;
+    [SerializeField] float startTimeBetweeenAttack;
+    
     float timeBetweenAttack;
     float gravityScaleAtStart;
     bool isAlive = true;
@@ -52,10 +52,8 @@ public class PlayerMovementMelee : MonoBehaviour
         Die();
 
         if(timeBetweenAttack <= 0) {
-            canAttack = true;
-            timeBetweenAttack = startTimeBetweeenAttack;
+            canAttack = true;            
         } else {
-            canAttack = false;
             timeBetweenAttack -= Time.deltaTime;
         }
         //transform.position = playerPos;
@@ -65,10 +63,14 @@ public class PlayerMovementMelee : MonoBehaviour
     {
         if(!PauseMenu.isPaused) 
         {
+            Debug.Log("Attacking");
             if(!isAlive) {return;}
-            if(!canAttack) {return;}
-            myAnimator.SetTrigger("Shooting");
-            Invoke("Attack", 0.3f);          
+            if(!canAttack) {Debug.Log("cant attack") ;return;}
+            canAttack = false;
+            timeBetweenAttack = startTimeBetweeenAttack;
+            Debug.Log("attackinggg");
+            myAnimator.SetTrigger("Attacking");
+            Invoke("Attack", 0.7f);          
         }
     }
 
@@ -78,7 +80,7 @@ public class PlayerMovementMelee : MonoBehaviour
          for (int i = 0; i < enemiesToDamage.Length; i++) {
             enemiesToDamage[i].GetComponent<EnemyMovement>().TakeDamage(damage);
          }
-         myAnimator.SetTrigger("notShooting");
+         myAnimator.SetTrigger("notAttacking");
     }
 
     void OnDrawGizmosSelected() {
@@ -149,9 +151,15 @@ public class PlayerMovementMelee : MonoBehaviour
         if(myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards"))) {
             isAlive = false;
             myAnimator.SetTrigger("Dying");
-            mySpriteRenderer.color = new Color (255f,0f,0f);
-            myRigidBody.velocity = deathKick;
-            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+            mySpriteRenderer.color = new Color (2f,1f,1f);
+            Invoke("Death", 0.7f);
+
         }
+    }
+
+    void Death() 
+    {
+        myRigidBody.velocity = deathKick;
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 }
