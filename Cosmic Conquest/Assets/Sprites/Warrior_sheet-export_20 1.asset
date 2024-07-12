@@ -6,17 +6,17 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Warrior_sheet-export_20
+  m_Name: Warrior_sheet-export_20 1
   m_Rect:
     serializedVersion: 2
     x: 256
     y: 128
     width: 128
     height: 64
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -23.040009, y: 0}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 64
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.32, y: 0.5}
   m_Extrude: 1
   m_IsPolygon: 0
   m_AtlasName: 
@@ -103,7 +103,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 152
-      _typelessdata: 0000203e00000000000000000000c03d000000bf000000000000203e0000e0be000000000000803c0000003f00000000000000bf0000003f00000000000048bf0000803d00000000000048bf000000bf000000000000000000000000000000000000dc3e5555d53e5555d93eabaaaa3e0000dc3e0000b03e0000d63e0000003f0000c03e0000003f0000b43eabaada3e0000b43eabaaaa3e
+      _typelessdata: f828043f0000000000000000f051e83e000000bf00000000f828043f0000e0be00000000f051c03e0000003f00000000205c0fbe0000003f0000000010aed7be0000803d0000000010aed7be000000bf000000000000000000000000000000000000dc3e5555d53e5555d93eabaaaa3e0000dc3e0000b03e0000d63e0000003f0000c03e0000003f0000b43eabaada3e0000b43eabaaaa3e
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -114,7 +114,7 @@ Sprite:
     textureRectOffset: {x: 14.076111, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 64, y: 320, z: 64, w: 160}
+    uvTransform: {x: 64, y: 296.96, z: 64, w: 160}
     downscaleMultiplier: 1
   m_AtlasRD:
     serializedVersion: 3
@@ -194,7 +194,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 152
-      _typelessdata: 0000203e00000000000000000000c03d000000bf000000000000203e0000e0be000000000000803c0000003f00000000000000bf0000003f00000000000048bf0000803d00000000000048bf000000bf000000000000000000000000000000000000dc3e5555d53e5555d93eabaaaa3e0000dc3e0000b03e0000d63e0000003f0000c03e0000003f0000b43eabaada3e0000b43eabaaaa3e
+      _typelessdata: f828043f0000000000000000f051e83e000000bf00000000f828043f0000e0be00000000f051c03e0000003f00000000205c0fbe0000003f0000000010aed7be0000803d0000000010aed7be000000bf000000000000000000000000000000000000dc3e5555d53e5555d93eabaaaa3e0000dc3e0000b03e0000d63e0000003f0000c03e0000003f0000b43eabaada3e0000b43eabaaaa3e
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -205,24 +205,24 @@ Sprite:
     textureRectOffset: {x: 14.076111, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 64, y: 320, z: 64, w: 160}
+    uvTransform: {x: 64, y: 296.96, z: 64, w: 160}
     downscaleMultiplier: 1
   m_PhysicsShape:
-  - - {x: 0.09375, y: -0.4375}
-    - {x: 0.140625, y: -0.3125}
-    - {x: 0.15625, y: -0.265625}
-    - {x: 0.15625, y: -0.078125}
-    - {x: -0.015625, y: 0.046875}
-    - {x: -0.03125, y: 0.5}
-    - {x: -0.265625, y: 0.5}
-    - {x: -0.453125, y: 0.484375}
-    - {x: -0.546875, y: 0.390625}
-    - {x: -0.59375, y: 0.171875}
-    - {x: -0.78125, y: -0.046875}
-    - {x: -0.78125, y: -0.25}
-    - {x: -0.75, y: -0.28125}
-    - {x: -0.78125, y: -0.375}
-    - {x: -0.78125, y: -0.5}
-    - {x: 0.03125, y: -0.5}
+  - - {x: 0.45375013, y: -0.4375}
+    - {x: 0.50062513, y: -0.3125}
+    - {x: 0.51625013, y: -0.265625}
+    - {x: 0.51625013, y: -0.078125}
+    - {x: 0.34437513, y: 0.046875}
+    - {x: 0.32875013, y: 0.5}
+    - {x: 0.09437513, y: 0.5}
+    - {x: -0.09312487, y: 0.484375}
+    - {x: -0.18687487, y: 0.390625}
+    - {x: -0.23374987, y: 0.171875}
+    - {x: -0.42124987, y: -0.046875}
+    - {x: -0.42124987, y: -0.25}
+    - {x: -0.38999987, y: -0.28125}
+    - {x: -0.42124987, y: -0.375}
+    - {x: -0.42124987, y: -0.5}
+    - {x: 0.39125013, y: -0.5}
   m_Bones: []
   m_SpriteID: d5872b9b30886234b9e273b4abd330cb
