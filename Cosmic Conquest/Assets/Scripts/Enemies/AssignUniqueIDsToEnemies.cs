@@ -6,8 +6,8 @@ public class AssignUniqueIDsToEnemies : MonoBehaviour
     [MenuItem("Tools/Assign Unique IDs to All Enemies")]
     public static void AssignUniqueIDs()
     {
-        EnemyMovement[] enemyMovements = FindObjectsOfType<EnemyMovement>();
-        foreach (EnemyMovement enemy in enemyMovements)
+        EnemyState[] enemyState = FindObjectsOfType<EnemyState>();
+        foreach (EnemyState enemy in enemyState)
         {
             enemy.enemyID = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(enemy);

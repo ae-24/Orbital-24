@@ -78,7 +78,7 @@ public class GameSession : MonoBehaviour
         HighScoreManager.Instance.CheckHighScore(score);
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         Collectible.ResetAllCollectibles(); // Reset all collectibles
-        EnemyMovement.ResetAllEnemies(); // Reset enemy IDs
+        EnemyState.ResetAllEnemies(); // Reset enemy IDs
         PlayerPrefs.DeleteKey("SavedScene");
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("ScoreValue");

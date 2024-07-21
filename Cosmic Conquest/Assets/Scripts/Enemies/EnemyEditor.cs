@@ -1,18 +1,18 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyMovement))]
+[CustomEditor(typeof(EnemyState))]
 public class EnemyEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        EnemyMovement enemyMovement = (EnemyMovement)target;
+        EnemyState enemyState = (EnemyState)target;
         if (GUILayout.Button("Generate Unique ID"))
         {
-            enemyMovement.enemyID = System.Guid.NewGuid().ToString();
-            EditorUtility.SetDirty(enemyMovement);
+            enemyState.enemyID = System.Guid.NewGuid().ToString();
+            EditorUtility.SetDirty(enemyState);
         }
     }
 }

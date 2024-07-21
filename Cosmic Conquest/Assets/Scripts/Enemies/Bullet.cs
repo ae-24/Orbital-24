@@ -10,11 +10,22 @@ public class Bullet : MonoBehaviour
     float xSpeed; // Horizontal speed and direction of bullet
 
     void Start()
+{
+    myRigidbody = GetComponent<Rigidbody2D>();
+    if (myRigidbody == null)
     {
-        myRigidbody = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<PlayerMovement>();
+        Debug.LogError("Rigidbody2D component not found on Enemy.");
+    }
+    player = FindObjectOfType<PlayerMovement>();
+    if (player != null)
+    {
         xSpeed = player.transform.localScale.x * bulletSpeed;
     }
+    else
+    {
+        Debug.LogError("PlayerMovement component not found.");
+    }
+}
 
     void Update()
     {
@@ -26,14 +37,16 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            EnemyMovement enemy = other.GetComponent<EnemyMovement>();
-            if (enemy != null)
+            EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
             {
-                enemy.SaveState();
+                enemyMovement.TakeDamage(1);
             }
-            enemy.TakeDamage(1);
-            //Destroy(other.gameObject);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
