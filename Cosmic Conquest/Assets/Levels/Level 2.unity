@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: a5c1b0e1-73c8-4e1a-a07b-cd989b144cfa
+  collectibleID: 1b918f7a-864b-4556-bae7-d1c5159ec57e
 --- !u!1 &179949531
 GameObject:
   m_ObjectHideFlags: 0
@@ -20320,6 +20320,64 @@ PolygonCollider2D:
       - {x: -17.009949, y: -17.990065}
       - {x: 29.139082, y: -18.154953}
       - {x: 29.056065, y: 10.931867}
+--- !u!1 &360639925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360639926}
+  - component: {fileID: 360639927}
+  m_Layer: 0
+  m_Name: LimitedVisTrigger
+  m_TagString: LimitedVision
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &360639926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360639925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.17, y: -14.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2132003012}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &360639927
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360639925}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.36995006, y: 0.21173525}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7399001, y: 1.4234705}
+  m_EdgeRadius: 0
 --- !u!1001 &387818873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20696,7 +20754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: f9f6e0e9-7006-480e-8180-4b82c1c8ea0d
+  collectibleID: a29537f0-0072-42c4-acaa-d37fc160407e
 --- !u!1001 &914679479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20771,7 +20829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 688a4869-b562-4fe2-9b42-5f3bafb1a42b
+  collectibleID: e9d57fd2-187a-450e-b2ea-b85c39d2f7fb
 --- !u!1 &955077820
 GameObject:
   m_ObjectHideFlags: 0
@@ -29217,6 +29275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8007825, guid: f6aeb82465c20bf4da93e3ec51703937, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6045400032808876087, guid: f6aeb82465c20bf4da93e3ec51703937, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -29352,7 +29414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: fe22827d-0ffe-4146-9395-0b6b261180d5
+  collectibleID: 1940e8b5-bb1f-4e3f-b8f4-b9700e81e601
 --- !u!4 &1083516471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3714438320910507318, guid: 012c58b9d410a524099fb2ca4433955a, type: 3}
@@ -29370,7 +29432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 1d898328-6bf8-4c47-8840-21a0fd8453d7
+  collectibleID: b5681b49-c8b5-4dff-b712-86fc59895e27
 --- !u!1 &1092306490
 GameObject:
   m_ObjectHideFlags: 0
@@ -29918,7 +29980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: d1fdb2fd-8d85-4d13-acac-e2498608b420
+  collectibleID: d084221f-9842-48d9-b5af-4ee7ced2f8b8
 --- !u!1001 &1340140183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30257,7 +30319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 260f4999-04be-4bfb-8e53-9e28d7a70367
+  collectibleID: aa74cf19-dea9-4b2d-9625-24dc07963a4d
 --- !u!1 &1619862440
 GameObject:
   m_ObjectHideFlags: 0
@@ -30382,7 +30444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: e0949f00-e089-4f9b-b2a2-0ed5b4c17372
+  collectibleID: d088a31a-70ee-4d33-87b0-066de50c5a64
 --- !u!1 &1641133159
 GameObject:
   m_ObjectHideFlags: 0
@@ -30430,7 +30492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: aeb88350-95ad-46ee-b0be-9b5dd7fdc00e
+  collectibleID: aae4782f-e643-4a40-b7cc-e2dcdab5b437
 --- !u!114 &1641133162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30528,7 +30590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83fef4ad830e04ba6a7e038558a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: 38030caa-1a15-42db-b221-71d85ab3a52c
+  enemyID: fa63633d-1050-43f9-a717-7ca50a488f25
 --- !u!4 &1668898960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3714438320910507318, guid: 012c58b9d410a524099fb2ca4433955a, type: 3}
@@ -30546,7 +30608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 586de129-e91e-4f8b-be8c-d0236e8e9a63
+  collectibleID: 9bd4aa47-ceda-4920-a22c-5508b0a25cd6
 --- !u!1001 &1679489675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30621,7 +30683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 859c293f-c238-48eb-9eb1-b27190676a60
+  collectibleID: 60cc1943-bb9e-4cf8-8601-0dac2fc3f722
 --- !u!4 &1813851684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3714438320910507318, guid: 012c58b9d410a524099fb2ca4433955a, type: 3}
@@ -30639,7 +30701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 0c02c899-306b-4129-8224-f01edd488463
+  collectibleID: b0c0875a-e9ee-4c60-8334-a6bef36de996
 --- !u!95 &1820121477 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3301308560079041657, guid: 4bb0d9c6e1cdd7a42ab5f8e252f8ea3b, type: 3}
@@ -30729,7 +30791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 90bbef3c-46d0-49f0-abca-04777d8632b7
+  collectibleID: 411b7f84-87de-40ee-8ad0-8cf9d855497e
 --- !u!1001 &1857259512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30940,7 +31002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec60b1d1f3fd09b46bbc54fd536b5651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleID: 99790ad9-4f35-4782-b58b-cc19d64ece7d
+  collectibleID: 3ebd6f2d-790d-4944-8822-c238250d23a1
 --- !u!1001 &1955903095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31023,7 +31085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83fef4ad830e04ba6a7e038558a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: c5b4552b-221c-4aa5-b332-f8a432900d52
+  enemyID: 630e481c-f4f5-4d65-b41d-e466b9586a26
 --- !u!1001 &1967226306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31111,7 +31173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83fef4ad830e04ba6a7e038558a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: fa4e15d6-b9ec-45c9-ad9a-f75290522ca7
+  enemyID: df13ae83-7a8b-4a92-8435-7bac6b4ce96b
 --- !u!1 &2119525531
 GameObject:
   m_ObjectHideFlags: 0
@@ -31285,7 +31347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83fef4ad830e04ba6a7e038558a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyID: d198dec6-cf22-411c-af0a-dd3949ace512
+  enemyID: e6f9fe54-b8bf-4048-9673-6728f854c2e1
 --- !u!1001 &3301308559506137912
 PrefabInstance:
   m_ObjectHideFlags: 0

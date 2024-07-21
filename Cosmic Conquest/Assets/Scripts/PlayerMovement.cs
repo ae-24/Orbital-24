@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     BoxCollider2D myFeetCollider;
     SpriteRenderer mySpriteRenderer;
     //public Vector3 playerPos;
-
+    private LimitedVisionManager limitedVisionManager;
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         myFeetCollider = GetComponent<BoxCollider2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+
+        limitedVisionManager = FindObjectOfType<LimitedVisionManager>();
     }
 
   
@@ -126,6 +128,14 @@ public class PlayerMovement : MonoBehaviour
             mySpriteRenderer.color = new Color (255f,0f,0f);
             myRigidBody.velocity = deathKick;
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("LimitedVision"))
+        {
+            limitedVisionManager.TriggerLimitedVision(5f); // Trigger limited vision for 5 seconds
         }
     }
 }
