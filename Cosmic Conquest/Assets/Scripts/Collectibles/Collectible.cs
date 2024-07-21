@@ -12,7 +12,6 @@ public class Collectible : MonoBehaviour
         }
         else
         {
-            // Check if CollectibleManager.Instance is not null before accessing it
             if (CollectibleManager.Instance != null)
             {
                 CollectibleManager.Instance.RegisterCollectible(collectibleID);
@@ -33,5 +32,12 @@ public class Collectible : MonoBehaviour
     public static void ResetAllCollectibles()
     {
         CollectibleManager.Instance?.ResetAllCollectibles();
+        Collectible[] allCollectibles = FindObjectsOfType<Collectible>();
+        foreach (Collectible collectible in allCollectibles)
+        {
+            PlayerPrefs.SetInt(collectible.collectibleID, 0);
+            collectible.gameObject.SetActive(true);
+        }
+        PlayerPrefs.Save();
     }
 }

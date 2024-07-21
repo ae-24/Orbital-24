@@ -10,19 +10,17 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused;
 
     private int currentSceneIndex;
-    
-    // Start is called before the first frame update
+
     void Start()
     {
         pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused) 
+            if (isPaused) 
             {
                 ResumeGame();
             }
@@ -52,12 +50,13 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         HighScoreManager.Instance.CheckHighScore(gameSession.score);
+
         PlayerPrefs.SetInt("playerStarted", 1);
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
-        PlayerPrefs.SetInt("PlayerLives", FindObjectOfType<GameSession>().playerLives);
-        PlayerPrefs.SetInt("ScoreValue", FindObjectOfType<GameSession>().score);
-        
+        PlayerPrefs.SetInt("PlayerLives", gameSession.playerLives);
+        PlayerPrefs.SetInt("ScoreValue", gameSession.score);
+
         PlayerPos playerPos = FindObjectOfType<PlayerPos>();
         if (playerPos != null)
         {
@@ -67,17 +66,36 @@ public class PauseMenu : MonoBehaviour
         {
             Debug.LogError("PlayerPos not found!");
         }
-        
+
         PlayerPrefs.Save();
-        FindObjectOfType<GameSession>().scoreText.enabled = false;
-        FindObjectOfType<ScenePersist>().ResetScenePersist();
+
+        DestroyPersistentObjects();
+
         SceneManager.LoadScene(0);
-        Destroy(gameObject);
     }
 
     public void Quit() 
     {
         Application.Quit();
         Application.OpenURL("about:blank");
+    }
+
+    private void DestroyPersistentObjects()
+    {
+        if (LimitedVisionManager.Instance != null)
+        {
+            Destroy(LimitedVisionManager.Instance.vignetteImage);
+            Destroy(LimitedVisionManager.Instance.gameObject);
+        }
+
+        if (CollectibleManager.Instance != null)
+        {
+            Destroy(CollectibleManager.Instance.gameObject);
+        }
+
+        if (EnemyManager.Instance != null)
+        {
+            Destroy(EnemyManager.Instance.gameObject);
+        }
     }
 }

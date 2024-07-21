@@ -4,7 +4,8 @@ using UnityEngine;
 public class LimitedVisionManager : MonoBehaviour
 {
     public static LimitedVisionManager Instance { get; private set; }
-    [SerializeField] private GameObject vignetteImage;
+    [SerializeField] public GameObject vignetteImage;
+    public Canvas vignetteCanvas;
 
     private void Awake()
     {
@@ -13,10 +14,13 @@ public class LimitedVisionManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Ensure the vignette image also persists across scenes
             if (vignetteImage != null)
             {
-                DontDestroyOnLoad(vignetteImage);
+                vignetteCanvas = vignetteImage.GetComponentInParent<Canvas>();
+                if (vignetteCanvas != null)
+                {
+                    DontDestroyOnLoad(vignetteCanvas.gameObject);
+                }
                 vignetteImage.SetActive(false);
             }
             else
@@ -27,18 +31,6 @@ public class LimitedVisionManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void Start()
-    {
-        if (vignetteImage != null)
-        {
-            Debug.Log("Vignette image is correctly assigned at Start.");
-        }
-        else
-        {
-            Debug.LogError("Vignette image is not assigned at Start.");
         }
     }
 
@@ -53,7 +45,6 @@ public class LimitedVisionManager : MonoBehaviour
         if (vignetteImage != null)
         {
             vignetteImage.SetActive(true);
-            vignetteImage.transform.SetAsLastSibling();
             yield return new WaitForSeconds(duration);
             vignetteImage.SetActive(false);
             Debug.Log("Limited vision ended.");

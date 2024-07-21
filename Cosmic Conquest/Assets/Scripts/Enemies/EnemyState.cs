@@ -12,7 +12,6 @@ public class EnemyState : MonoBehaviour
         }
         else
         {
-            // Check if CollectibleManager.Instance is not null before accessing it
             if (EnemyManager.Instance != null)
             {
                 EnemyManager.Instance.RegisterEnemy(enemyID);
@@ -33,6 +32,12 @@ public class EnemyState : MonoBehaviour
     public static void ResetAllEnemies()
     {
         EnemyManager.Instance?.ResetAllEnemies();
+        EnemyState[] allEnemies = FindObjectsOfType<EnemyState>();
+        foreach (EnemyState enemy in allEnemies)
+        {
+            PlayerPrefs.SetInt(enemy.enemyID, 0);
+            enemy.gameObject.SetActive(true);
+        }
+        PlayerPrefs.Save();
     }
-
 }
