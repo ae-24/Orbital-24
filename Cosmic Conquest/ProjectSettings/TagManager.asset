@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - LimitedVision
+  - Platform
+  - Bullet
   layers:
   - Default
   - TransparentFX
