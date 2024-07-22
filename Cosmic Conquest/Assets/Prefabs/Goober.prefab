@@ -187,4 +187,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   health: 3
-  enemyID: 5734866a-8be2-4ccf-9df3-79bcffa9cfe2
+  bloodEffect: {fileID: 4243943539530901175, guid: b7877f07e6aaa8840bc9d189e5526911, type: 3}
+  startDazedTime: 0.6
