@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    [SerializeField] GameSession gameSession;
+    private GameSession gameSession;
     public static bool isPaused;
 
     private int currentSceneIndex;
@@ -47,6 +47,16 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        // Ensure we get the current GameSession instance
+        gameSession = FindObjectOfType<GameSession>();
+        if (gameSession == null)
+        {
+            Debug.LogError("GameSession not found!");
+            return;
+        }
+
+        gameSession.DisableScoreText();
+
         isPaused = false;
         Time.timeScale = 1f;
         HighScoreManager.Instance.CheckHighScore(gameSession.score);
@@ -56,6 +66,9 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         PlayerPrefs.SetInt("PlayerLives", gameSession.playerLives);
         PlayerPrefs.SetInt("ScoreValue", gameSession.score);
+
+        Debug.Log("Score = " + gameSession.score);
+        Debug.Log("Lives = " + gameSession.playerLives);
 
         PlayerPos playerPos = FindObjectOfType<PlayerPos>();
         if (playerPos != null)

@@ -3,22 +3,19 @@ using UnityEngine;
 public class EnemyState : MonoBehaviour
 {
     public string enemyID;
-
+    private static bool newGame = false;
     void Start()
     {
-        if (PlayerPrefs.GetInt(enemyID, 0) == 1)
+        if (newGame) 
         {
-            gameObject.SetActive(false);
+            PlayerPrefs.DeleteKey(enemyID);
+            gameObject.SetActive(true);
         }
         else
         {
-            if (EnemyManager.Instance != null)
+            if (PlayerPrefs.HasKey(enemyID))
             {
-                EnemyManager.Instance.RegisterEnemy(enemyID);
-            }
-            else
-            {
-                Debug.LogError("EnemyManager instance is null.");
+                gameObject.SetActive(PlayerPrefs.GetInt(enemyID) == 1);
             }
         }
     }
@@ -28,16 +25,9 @@ public class EnemyState : MonoBehaviour
         PlayerPrefs.SetInt(enemyID, 1);
         gameObject.SetActive(false);
     }
-
     public static void ResetAllEnemies()
     {
+        newGame = true;
         EnemyManager.Instance?.ResetAllEnemies();
-        EnemyState[] allEnemies = FindObjectsOfType<EnemyState>();
-        foreach (EnemyState enemy in allEnemies)
-        {
-            PlayerPrefs.SetInt(enemy.enemyID, 0);
-            enemy.gameObject.SetActive(true);
-        }
-        PlayerPrefs.Save();
     }
 }

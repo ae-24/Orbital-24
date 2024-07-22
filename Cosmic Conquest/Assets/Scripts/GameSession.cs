@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] public volatile int playerLives = 3; // Number of player lives
-    [SerializeField] public volatile int score = 0;
+    [SerializeField] public int playerLives = 3; // Number of player lives
+    [SerializeField] public int score = 0;
 
     [SerializeField] public TextMeshProUGUI scoreText;
 
@@ -28,6 +28,23 @@ public class GameSession : MonoBehaviour
     void Start()
     {
         scoreText.text = score.ToString();
+    }
+
+    public void EnableScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.enabled = true;
+            scoreText.text = score.ToString();
+        }
+    }
+
+    public void DisableScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.enabled = false;
+        }
     }
 
     // Resets game session when player runs out of lives

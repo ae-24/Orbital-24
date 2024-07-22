@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (var id in enemyIDs)
         {
-            PlayerPrefs.SetInt(id, 0);
+            enemyIDs.Remove(id);
         }
         PlayerPrefs.Save();
     }

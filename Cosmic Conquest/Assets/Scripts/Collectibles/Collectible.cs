@@ -3,22 +3,20 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public string collectibleID;
+    private static bool newGame = false;
 
     void Start()
     {
-        if (PlayerPrefs.GetInt(collectibleID, 0) == 1)
+        if (newGame) 
         {
-            gameObject.SetActive(false);
+            PlayerPrefs.DeleteKey(collectibleID);
+            gameObject.SetActive(true);
         }
         else
         {
-            if (CollectibleManager.Instance != null)
+            if (PlayerPrefs.HasKey(collectibleID))
             {
-                CollectibleManager.Instance.RegisterCollectible(collectibleID);
-            }
-            else
-            {
-                Debug.LogError("CollectibleManager instance is null. Ensure CollectibleManager is initialized before Collectible objects.");
+                gameObject.SetActive(PlayerPrefs.GetInt(collectibleID) == 0);
             }
         }
     }
@@ -31,13 +29,7 @@ public class Collectible : MonoBehaviour
 
     public static void ResetAllCollectibles()
     {
+        newGame = true;
         CollectibleManager.Instance?.ResetAllCollectibles();
-        Collectible[] allCollectibles = FindObjectsOfType<Collectible>();
-        foreach (Collectible collectible in allCollectibles)
-        {
-            PlayerPrefs.SetInt(collectible.collectibleID, 0);
-            collectible.gameObject.SetActive(true);
-        }
-        PlayerPrefs.Save();
     }
 }

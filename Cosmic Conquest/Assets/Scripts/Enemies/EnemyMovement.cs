@@ -30,16 +30,10 @@ public class EnemyMovement : MonoBehaviour
         transform.localScale = new Vector2(-Mathf.Sign(myRigidbody.velocity.x), 1f);
     }
 
-    // public void SaveState()
-    // {
-    //     PlayerPrefs.SetInt(enemyID, 1);
-    //     PlayerPrefs.Save();
-    // }
-  
     public void TakeDamage(int damage) 
     {
         health -= damage;
-        Debug.Log("damage TAKEN");
+        Debug.Log("Damage Taken");
         if(health <= 0) 
         {
             EnemyState enemyState = GetComponent<EnemyState>();
@@ -47,7 +41,6 @@ public class EnemyMovement : MonoBehaviour
             {
                 enemyState.Died();
             }
-            //Destroy(gameObject);
         }
     }
 }

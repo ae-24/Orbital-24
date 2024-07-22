@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteKey("SavedScene");
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("ScoreValue");
+
         Collectible.ResetAllCollectibles(); // Reset all collectibles
         EnemyState.ResetAllEnemies(); // Reset enemy IDs
 
@@ -49,11 +50,7 @@ public class GameManager : MonoBehaviour
         {
             gameSession.playerLives = 3;
             gameSession.score = 0;
-            if (gameSession.scoreText != null)
-            {
-                gameSession.scoreText.enabled = true;
-                gameSession.scoreText.text = gameSession.score.ToString();
-            }
+            gameSession.EnableScoreText();
         }
         else
         {
@@ -93,13 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("GameSession found.");
             gameSession.playerLives = PlayerPrefs.GetInt("PlayerLives");
             gameSession.score = PlayerPrefs.GetInt("ScoreValue");
-            Debug.Log("Player Lives and Score Set.");
-            if (gameSession.scoreText != null)
-            {
-                gameSession.scoreText.enabled = true;
-                gameSession.scoreText.text = gameSession.score.ToString();
-            }
-            Debug.Log("Player Score Linked.");
+            gameSession.EnableScoreText();
 
             // Wait until the PlayerPos object is available in the scene
             PlayerPos playerPos = null;
