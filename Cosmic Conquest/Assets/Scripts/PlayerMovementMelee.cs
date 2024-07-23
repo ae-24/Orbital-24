@@ -146,7 +146,7 @@ public class PlayerMovementMelee : MonoBehaviour
         }
     }
 
-    void Die() 
+    public void Die() 
     {
         if(myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards"))) {
             isAlive = false;

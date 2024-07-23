@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlasticGui.WorkspaceWindow;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,6 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] public int playerLives = 3; // Number of player lives
     [SerializeField] public int score = 0;
-
     [SerializeField] public TextMeshProUGUI scoreText;
 
     void Awake()
@@ -27,6 +27,7 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
+        scoreText = gameObject.AddComponent<TextMeshProUGUI>();
         scoreText.text = score.ToString();
     }
 

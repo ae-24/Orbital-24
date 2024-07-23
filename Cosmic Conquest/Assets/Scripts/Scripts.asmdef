@@ -1,0 +1,28 @@
+{
+    "name": "Scripts",
+    "rootNamespace": "",
+    "references": [
+        "Unity.InputSystem.TestFramework",
+        "Unity.InputSystem.ForUI",
+        "Unity.InputSystem.IntegrationTests",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.TextMeshPro.Editor",
+        "Unity.TextMeshPro.Editor.Tests",
+        "Unity.TextMeshPro.Tests",
+        "Unity.Mathematics",
+        "Unity.Mathematics.Editor",
+        "Unity.Mathematics.Tests"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "WebGL"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
