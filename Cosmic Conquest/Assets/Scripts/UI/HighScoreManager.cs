@@ -15,7 +15,6 @@ public class HighScoreManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             LoadHighScore();
-            
         }
         else
         {
@@ -56,5 +55,13 @@ public class HighScoreManager : MonoBehaviour
         {
             Debug.LogWarning("HighScoreText is not assigned in the inspector.");
         }
+    }
+
+    public void ResetHighScore()
+    {
+        highScore = 0;
+        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.Save();
+        DisplayHighScore();
     }
 }

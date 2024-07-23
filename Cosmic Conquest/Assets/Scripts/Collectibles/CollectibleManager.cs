@@ -32,7 +32,7 @@ public class CollectibleManager : MonoBehaviour
     {
         foreach (var id in collectibleIDs)
         {
-            collectibleIDs.Remove(id);
+            PlayerPrefs.DeleteKey(id);
         }
         PlayerPrefs.Save();
     }

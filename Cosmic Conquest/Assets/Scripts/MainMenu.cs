@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         HighScoreManager.Instance.highScoreText = highScoreText;
         HighScoreManager.Instance.DisplayHighScore();
     }
+
     public void PlayGame()
     {
         GameManager.Instance.PlayGame();
@@ -24,5 +25,10 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         GameManager.Instance.Quit();
+    }
+
+    public void ResetHighScore()
+    {
+        HighScoreManager.Instance.ResetHighScore();
     }
 }

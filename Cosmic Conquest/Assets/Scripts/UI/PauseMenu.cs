@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused) 
+            if (isPaused)
             {
                 ResumeGame();
             }
@@ -28,7 +27,7 @@ public class PauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
-        }   
+        }
     }
 
     public void PauseGame()
@@ -58,7 +57,7 @@ public class PauseMenu : MonoBehaviour
         gameSession.DisableScoreText();
 
         isPaused = false;
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         HighScoreManager.Instance.CheckHighScore(gameSession.score);
 
         PlayerPrefs.SetInt("playerStarted", 1);
@@ -66,9 +65,6 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         PlayerPrefs.SetInt("PlayerLives", gameSession.playerLives);
         PlayerPrefs.SetInt("ScoreValue", gameSession.score);
-
-        Debug.Log("Score = " + gameSession.score);
-        Debug.Log("Lives = " + gameSession.playerLives);
 
         PlayerPos playerPos = FindObjectOfType<PlayerPos>();
         if (playerPos != null)
@@ -80,14 +76,22 @@ public class PauseMenu : MonoBehaviour
             Debug.LogError("PlayerPos not found!");
         }
 
+        EnemyManager.Instance.SaveAllEnemyPositions();
+
         PlayerPrefs.Save();
 
-        DestroyPersistentObjects();
+        StartCoroutine(LoadMainMenu());
+    }
 
+    IEnumerator LoadMainMenu()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        DestroyPersistentObjects();
         SceneManager.LoadScene(0);
     }
 
-    public void Quit() 
+    public void Quit()
     {
         Application.Quit();
         Application.OpenURL("about:blank");
@@ -101,14 +105,12 @@ public class PauseMenu : MonoBehaviour
             Destroy(LimitedVisionManager.Instance.gameObject);
         }
 
-        if (CollectibleManager.Instance != null)
-        {
-            Destroy(CollectibleManager.Instance.gameObject);
-        }
-
         if (EnemyManager.Instance != null)
         {
             Destroy(EnemyManager.Instance.gameObject);
         }
+
+        // No need to destroy CollectibleManager here
     }
+
 }

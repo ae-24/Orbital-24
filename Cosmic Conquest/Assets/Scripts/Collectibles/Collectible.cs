@@ -5,25 +5,31 @@ public class Collectible : MonoBehaviour
     public string collectibleID;
     private static bool newGame = false;
 
-    void Start()
+    public void Start()
     {
-        if (newGame) 
+        if (newGame)
         {
             PlayerPrefs.DeleteKey(collectibleID);
             gameObject.SetActive(true);
+            Debug.Log($"New game, resetting {collectibleID}");
         }
         else
         {
             if (PlayerPrefs.HasKey(collectibleID))
             {
-                gameObject.SetActive(PlayerPrefs.GetInt(collectibleID) == 0);
+                bool isActive = PlayerPrefs.GetInt(collectibleID) == 0;
+                gameObject.SetActive(isActive);
+                Debug.Log($"{collectibleID} set active: {isActive}");
             }
         }
+
+        CollectibleManager.Instance.RegisterCollectible(collectibleID);
     }
 
     public void Collect()
     {
         PlayerPrefs.SetInt(collectibleID, 1);
+        Debug.Log($"Collected {collectibleID}, setting active to false.");
         gameObject.SetActive(false);
     }
 

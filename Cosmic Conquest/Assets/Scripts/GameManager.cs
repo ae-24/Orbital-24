@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         // Optionally, reset other game-related data here
 
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
 
         StartCoroutine(InitializeGameSession());
     }
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
             sceneToContinue = PlayerPrefs.GetInt("SavedScene");
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadSceneAsync(sceneToContinue);
+            Time.timeScale = 1f;
         }
         else
         {
@@ -110,6 +112,9 @@ public class GameManager : MonoBehaviour
             {
                 Debug.LogError("PlayerPos not found after multiple attempts.");
             }
+
+            // Ensure enemy positions are loaded
+            EnemyManager.Instance?.LoadAllEnemyPositions();
         }
         else
         {
