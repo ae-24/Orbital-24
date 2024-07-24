@@ -26,9 +26,13 @@ public class GameSession : MonoBehaviour
     }
 
     void Start()
-    {
-        scoreText = gameObject.AddComponent<TextMeshProUGUI>();
+    {   try 
+        {
         scoreText.text = score.ToString();
+        } catch {
+        scoreText = gameObject.AddComponent<TextMeshProUGUI>();
+        }
+        
     }
 
     public void EnableScoreText()
