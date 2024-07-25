@@ -38,9 +38,14 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Enemy")
         {
             EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
+            Boss boss = other.GetComponent<Boss>();
             if (enemyMovement != null)
             {
                 enemyMovement.TakeDamage(1);
+            }
+            if (boss != null)
+            {
+                boss.TakeDamage(1);
             }
             Destroy(gameObject);
         }

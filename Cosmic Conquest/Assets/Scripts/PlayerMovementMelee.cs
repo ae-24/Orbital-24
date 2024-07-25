@@ -63,12 +63,12 @@ public class PlayerMovementMelee : MonoBehaviour
     {
         if(!PauseMenu.isPaused) 
         {
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
             if(!isAlive) {return;}
-            if(!canAttack) {Debug.Log("cant attack") ;return;}
+            if(!canAttack) {return;}
             canAttack = false;
             timeBetweenAttack = startTimeBetweeenAttack;
-            Debug.Log("attackinggg");
+            //Debug.Log("attackinggg");
             myAnimator.SetTrigger("Attacking");
             Invoke("Attack", 0.7f);          
         }

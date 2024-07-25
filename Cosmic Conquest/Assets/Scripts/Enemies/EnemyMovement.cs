@@ -56,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
         dazedTime = startDazedTime;
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
         health -= damage;
-        Debug.Log("Damage Taken");
+        //Debug.Log("Damage Taken");
         if(health <= 0) 
         {
             EnemyState enemyState = GetComponent<EnemyState>();

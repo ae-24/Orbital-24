@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!PauseMenu.isPaused) 
         {
-            if(!isAlive){ return;}
+            if(!isAlive){return;}
             myAnimator.SetTrigger("Shooting");
             Invoke("ShootBullet", 0.3f);          
         }
