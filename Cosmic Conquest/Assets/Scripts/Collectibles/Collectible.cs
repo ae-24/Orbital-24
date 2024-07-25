@@ -25,7 +25,7 @@ public class Collectible : MonoBehaviour
 
         CollectibleManager.Instance.RegisterCollectible(collectibleID);
     }
-
+    
     public void Collect()
     {
         PlayerPrefs.SetInt(collectibleID, 1);
@@ -37,5 +37,15 @@ public class Collectible : MonoBehaviour
     {
         newGame = true;
         CollectibleManager.Instance?.ResetAllCollectibles();
+    }
+
+    public static void ResetNewGameFlag()
+    {
+        newGame = false;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.DeleteKey(collectibleID);
     }
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using PlasticGui.WorkspaceWindow;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,13 +23,15 @@ public class GameSession : MonoBehaviour
     }
 
     void Start()
-    {   try 
+    {
+        if (scoreText != null)
         {
-        scoreText.text = score.ToString();
-        } catch {
-        scoreText = gameObject.AddComponent<TextMeshProUGUI>();
+            scoreText.text = score.ToString();
         }
-        
+        else
+        {
+            Debug.LogWarning("ScoreText is not assigned!");
+        }
     }
 
     public void EnableScoreText()
@@ -69,13 +68,19 @@ public class GameSession : MonoBehaviour
     public void UpdateScore(int value)
     {
         score = value;
-        scoreText.text = score.ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
     }
 
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        scoreText.text = score.ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
     }
 
     // Reduces player lives count when player dies, and resets them to the start of their current level
