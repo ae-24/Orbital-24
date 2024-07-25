@@ -3,34 +3,37 @@ using UnityEngine;
 
 public class CollectibleManager : MonoBehaviour
 {
-    private static CollectibleManager instance;
-    public static CollectibleManager Instance
+    public static CollectibleManager Instance { get; private set; }
+
+    private HashSet<string> collectibleIDs = new HashSet<string>();
+
+    void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<CollectibleManager>();
-            }
-            return instance;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    private List<string> collectibleIDs = new List<string>();
-
-    public void RegisterCollectible(string collectibleID)
+    public void RegisterCollectible(string id)
     {
-        if (!collectibleIDs.Contains(collectibleID))
+        if (!collectibleIDs.Contains(id))
         {
-            collectibleIDs.Add(collectibleID);
+            collectibleIDs.Add(id);
         }
     }
 
     public void ResetAllCollectibles()
     {
-        foreach (var collectibleID in collectibleIDs)
+        foreach (var id in collectibleIDs)
         {
-            PlayerPrefs.DeleteKey(collectibleID);
+            PlayerPrefs.DeleteKey(id);
         }
+        PlayerPrefs.Save();
     }
 }
