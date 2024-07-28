@@ -42,16 +42,12 @@ public class Boss : MonoBehaviour
         //Debug.Log("Damage Taken");
         if(health <= 0) 
         {
-            Invoke("Dead", 1f);
+            Invoke("Dead", 2f);
         }
     }
 
     void Dead () 
     {
-        EnemyState enemyState = GetComponent<EnemyState>();
-        if (enemyState != null)
-        {
-            enemyState.Died();
-        }
+        Destroy(gameObject);
     }
 }
