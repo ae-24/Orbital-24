@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
+    private GameSession gameSession;
     [SerializeField] float levelLoadDelay = 1f;
 
     //On player reaching exit of the level, loads in the next level after a delay
@@ -11,6 +12,15 @@ public class LevelExit : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            gameSession = FindObjectOfType<GameSession>();
+            if (gameSession == null)
+            {
+                Debug.LogError("GameSession not found!");
+                return;
+            }
+
+            gameSession.DisableScoreText();
+
             StartCoroutine(LoadNextLevel());
         }
     }

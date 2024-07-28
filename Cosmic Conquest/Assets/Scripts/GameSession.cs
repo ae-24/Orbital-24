@@ -124,7 +124,15 @@ public class GameSession : MonoBehaviour
         playerLives = 3;
         score = 0;
 
-        SceneManager.LoadScene(1); // Assumes your first level is build index 1
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex > 1)
+        {
+            SceneManager.LoadScene(currentSceneIndex - 1); // Assumes your first level is build index 1
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
         Destroy(gameObject);
     }
 }
