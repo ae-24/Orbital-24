@@ -10,7 +10,7 @@ public class PlayerMovementMelee : MonoBehaviour
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 24f;
     [SerializeField] float climbSpeed = 10f;
-    [SerializeField] Vector2 deathKick = new Vector2 (0f, 0f);
+    [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
 
@@ -152,6 +152,7 @@ public class PlayerMovementMelee : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             mySpriteRenderer.color = new Color (2f,1f,1f);
+            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             Invoke("Death", 0.7f);
 
         }
@@ -159,7 +160,6 @@ public class PlayerMovementMelee : MonoBehaviour
 
     void Death() 
     {
-        myRigidBody.velocity = deathKick;
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 }
