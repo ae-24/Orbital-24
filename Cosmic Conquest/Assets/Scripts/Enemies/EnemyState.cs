@@ -31,9 +31,9 @@ public class EnemyState : MonoBehaviour
 
     public void Died()
     {
-        PlayerPrefs.SetInt(enemyID, 1);
-        PlayerPrefs.DeleteKey(enemyID + "_x");
-        PlayerPrefs.DeleteKey(enemyID + "_y");
+        PlayerPrefs.SetInt(enemyID, 0); // Set to 0 when the enemy is dead
+        PlayerPrefs.SetFloat(enemyID + "_x", transform.position.x);
+        PlayerPrefs.SetFloat(enemyID + "_y", transform.position.y);
         gameObject.SetActive(false);
     }
 
@@ -41,6 +41,7 @@ public class EnemyState : MonoBehaviour
     {
         PlayerPrefs.SetFloat(enemyID + "_x", transform.position.x);
         PlayerPrefs.SetFloat(enemyID + "_y", transform.position.y);
+        PlayerPrefs.SetInt(enemyID, gameObject.activeSelf ? 1 : 0); // Save the active state
     }
 
     public static void ResetAllEnemies()

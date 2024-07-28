@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     int health;
-    int maxHealth = 3; // Assuming max health is always 3
+    int maxHealth = 3;
 
-    public Sprite emptyHeart;
-    public Sprite fullHeart;
-    public Image[] hearts;
+    [SerializeField] Sprite emptyHeart;
+    [SerializeField] Sprite fullHeart;
+    [SerializeField] Image[] hearts;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class HealthDisplay : MonoBehaviour
                 Debug.LogWarning("GameSession not found!");
             }
 
-            yield return new WaitForSeconds(0.5f); // Update health every 0.5 seconds
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -48,14 +48,7 @@ public class HealthDisplay : MonoBehaviour
             {
                 hearts[i].sprite = emptyHeart;
             }
-            if (i < maxHealth)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            hearts[i].enabled = i < maxHealth;
         }
     }
 }

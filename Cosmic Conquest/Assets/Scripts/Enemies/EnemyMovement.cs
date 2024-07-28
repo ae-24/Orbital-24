@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -20,30 +19,41 @@ public class EnemyMovement : MonoBehaviour
     {
         myAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        currentSpeed = moveSpeed;
 
+        if (myRigidbody == null)
+        {
+            Debug.LogError("Rigidbody2D not found on " + gameObject.name);
+            return;
+        }
+
+        currentSpeed = moveSpeed;
     }
 
     void Update()
-    {   
-        if(dazedTime <= 0) {
+    {
+        if (myRigidbody == null) return;
+
+        if (dazedTime <= 0)
+        {
             myAnimator.SetBool("isDazed", false);
             moveSpeed = currentSpeed;
-            myRigidbody.velocity = new Vector2(moveSpeed, 0f);
-        } else {
+        }
+        else
+        {
             myAnimator.SetBool("isDazed", true);
             moveSpeed = dazedSpeed;
             dazedTime -= Time.deltaTime;
-            myRigidbody.velocity = new Vector2(moveSpeed, 0f);
         }
+
+        myRigidbody.velocity = new Vector2(moveSpeed, 0f);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Bullet") {return;}
-            moveSpeed = -moveSpeed;
-            currentSpeed = -currentSpeed;
-            FlipEnemyFacing();
+        if (other.tag == "Bullet") { return; }
+        moveSpeed = -moveSpeed;
+        currentSpeed = -currentSpeed;
+        FlipEnemyFacing();
     }
 
     void FlipEnemyFacing()
@@ -51,19 +61,40 @@ public class EnemyMovement : MonoBehaviour
         transform.localScale = new Vector2(-Mathf.Sign(myRigidbody.velocity.x), 1f);
     }
 
-    public void TakeDamage(int damage) 
+    // public void TakeDamage(int damage)
+    // {
+    //     dazedTime = startDazedTime;
+    //     Instantiate(bloodEffect, transform.position, Quaternion.identity);
+    //     health -= damage;
+
+    //     if (health <= 0)
+    //     {
+    //         EnemyState enemyState = GetComponent<EnemyState>();
+    //         if (enemyState != null)
+    //         {
+    //             enemyState.Died();
+    //         }
+    //     }
+    // }
+    public void TakeDamage(int damage)
     {
-        dazedTime = startDazedTime;
-        Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        if (this == null || gameObject == null)
+            return;
+
         health -= damage;
-        //Debug.Log("Damage Taken");
-        if(health <= 0) 
+        if (health <= 0)
         {
-            EnemyState enemyState = GetComponent<EnemyState>();
-            if (enemyState != null)
-            {
-                enemyState.Died();
-            }
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (this == null || gameObject == null)
+            return;
+
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        PlayerPrefs.SetInt(GetComponent<EnemyState>().enemyID, 0);
     }
 }

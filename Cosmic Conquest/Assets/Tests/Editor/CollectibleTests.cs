@@ -16,64 +16,46 @@ public class CollectibleTests
 
         managerObject = new GameObject();
         managerObject.AddComponent<CollectibleManager>();
+        CollectibleManager.Instance.RegisterCollectible(collectible.collectibleID); // Ensure instance is initialized
     }
 
     [TearDown]
     public void TearDown()
     {
-        Object.Destroy(collectibleObject);
-        Object.Destroy(managerObject);
+        Object.DestroyImmediate(collectibleObject);
+        Object.DestroyImmediate(managerObject);
         PlayerPrefs.DeleteKey("testCollectible");
-        Collectible.ResetNewGameFlag(); // Reset the newGame flag
+        Collectible.ResetNewGameFlag();
     }
 
     [Test]
     public void Collectible_Collect_SetsPlayerPref()
     {
-        // Act
         collectible.Collect();
-
-        // Assert
         Assert.AreEqual(1, PlayerPrefs.GetInt("testCollectible"));
     }
 
     [Test]
     public void Collectible_Start_ChecksPlayerPref()
     {
-        // Arrange
         PlayerPrefs.SetInt("testCollectible", 1);
-
-        // Act
         collectible.Start();
-
-        // Assert
         Assert.IsFalse(collectible.gameObject.activeSelf);
     }
 
     [Test]
     public void Collectible_ResetAllCollectibles_DeletesPlayerPref()
     {
-        // Arrange
         PlayerPrefs.SetInt("testCollectible", 1);
-
-        // Act
         Collectible.ResetAllCollectibles();
-
-        // Assert
         Assert.IsFalse(PlayerPrefs.HasKey("testCollectible"));
     }
 
     [Test]
     public void Collectible_OnDestroy_CleansUpPlayerPrefs()
     {
-        // Arrange
         collectible.Collect();
-
-        // Act
-        Object.DestroyImmediate(collectibleObject); // Immediate destruction to trigger OnDestroy
-
-        // Assert
+        Object.DestroyImmediate(collectibleObject);
         Assert.IsFalse(PlayerPrefs.HasKey("testCollectible"));
     }
 }
-

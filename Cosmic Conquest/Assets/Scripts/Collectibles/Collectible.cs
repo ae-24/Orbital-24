@@ -21,16 +21,21 @@ public class Collectible : MonoBehaviour
                 gameObject.SetActive(isActive);
                 Debug.Log($"{collectibleID} set active: {isActive}");
             }
+            else
+            {
+                Debug.Log($"{collectibleID} does not exist in PlayerPrefs. Setting active.");
+                gameObject.SetActive(true);
+            }
         }
 
         CollectibleManager.Instance.RegisterCollectible(collectibleID);
     }
-    
+
     public void Collect()
     {
         PlayerPrefs.SetInt(collectibleID, 1);
-        Debug.Log($"Collected {collectibleID}, setting active to false.");
         gameObject.SetActive(false);
+        Debug.Log($"{collectibleID} collected and set inactive.");
     }
 
     public static void ResetAllCollectibles()
@@ -47,5 +52,6 @@ public class Collectible : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.DeleteKey(collectibleID);
+        Debug.Log($"{collectibleID} removed from PlayerPrefs on destroy.");
     }
 }

@@ -15,9 +15,21 @@ public class CoinPickup : MonoBehaviour
             {
                 collectible.Collect();
             }
+            else
+            {
+                Debug.LogWarning("Collectible component not found on coin pickup.");
+            }
+
             coinSound = GameObject.Find("SFX AudioSource").GetComponent<AudioSource>();
-            FindObjectOfType<GameSession>().AddToScore(pointsForCoinPickup);
-            coinSound.PlayOneShot(coinPickupSFX, 1f);
+            if (coinSound != null)
+            {
+                FindObjectOfType<GameSession>().AddToScore(pointsForCoinPickup);
+                coinSound.PlayOneShot(coinPickupSFX, 1f);
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource for coin pickup sound not found.");
+            }
         }
     }
 }

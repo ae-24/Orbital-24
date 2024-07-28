@@ -46,7 +46,6 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        // Ensure we get the current GameSession instance
         gameSession = FindObjectOfType<GameSession>();
         if (gameSession == null)
         {
@@ -57,7 +56,6 @@ public class PauseMenu : MonoBehaviour
         gameSession.DisableScoreText();
 
         isPaused = false;
-        //Time.timeScale = 1f;
         HighScoreManager.Instance.CheckHighScore(gameSession.score);
 
         PlayerPrefs.SetInt("playerStarted", 1);
@@ -112,5 +110,4 @@ public class PauseMenu : MonoBehaviour
 
         // No need to destroy CollectibleManager here
     }
-
 }

@@ -12,7 +12,6 @@ public class Boss : MonoBehaviour
     
     //public Animator camAnim;
     private Animator anim;
-    bool isDead;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class Boss : MonoBehaviour
 
         if (health <= 0) {
             anim.SetTrigger("Death");
-            isDead = true;
         }
 
         if (timeBtwDamage > 0) {
@@ -45,16 +43,15 @@ public class Boss : MonoBehaviour
         if(health <= 0) 
         {
             Invoke("Dead", 1f);
-
         }
     }
 
     void Dead () 
     {
         EnemyState enemyState = GetComponent<EnemyState>();
-            if (enemyState != null)
-            {
-                enemyState.Died();
-            }
+        if (enemyState != null)
+        {
+            enemyState.Died();
+        }
     }
 }

@@ -24,7 +24,6 @@ public class HighScoreManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("High Score: " + highScore);
         DisplayHighScore();
     }
 
@@ -42,7 +41,6 @@ public class HighScoreManager : MonoBehaviour
     private void LoadHighScore()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
-        DisplayHighScore();
     }
 
     public void DisplayHighScore()
@@ -55,6 +53,12 @@ public class HighScoreManager : MonoBehaviour
         {
             Debug.LogWarning("HighScoreText is not assigned in the inspector.");
         }
+    }
+
+    public void SetHighScoreText(TextMeshProUGUI newText)
+    {
+        highScoreText = newText;
+        DisplayHighScore();
     }
 
     public void ResetHighScore()

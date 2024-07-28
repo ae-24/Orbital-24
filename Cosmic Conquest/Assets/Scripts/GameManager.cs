@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public TextMeshProUGUI highScoreText;
 
     private int sceneToContinue;
 
@@ -23,18 +25,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("PlayGame button pressed.");
-
-        // Delete specific PlayerPrefs keys related to the game session
         PlayerPrefs.DeleteKey("playerStarted");
         PlayerPrefs.DeleteKey("SavedScene");
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("ScoreValue");
 
-        Collectible.ResetAllCollectibles(); // Reset all collectibles
-        EnemyState.ResetAllEnemies(); // Reset enemy IDs
-
-        // Optionally, reset other game-related data here
+        Collectible.ResetAllCollectibles();
+        EnemyState.ResetAllEnemies();
 
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
@@ -44,14 +41,17 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator InitializeGameSession()
     {
-        yield return null; // Wait for the next frame to ensure the scene is loaded
+        yield return null;
 
         GameSession gameSession = FindObjectOfType<GameSession>();
         if (gameSession != null)
         {
+            gameSession.ResetGameSession();
             gameSession.playerLives = 3;
             gameSession.score = 0;
             gameSession.EnableScoreText();
+            gameSession.highScoreText = highScoreText;
+            HighScoreManager.Instance.SetHighScoreText(highScoreText);
         }
         else
         {
@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        Debug.Log("ContinueGame button pressed.");
         if (PlayerPrefs.HasKey("playerStarted"))
         {
             sceneToContinue = PlayerPrefs.GetInt("SavedScene");
@@ -83,37 +82,25 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator LoadGameSession()
     {
-        Debug.Log("Starting LoadGameSession coroutine.");
-        yield return null; // Wait for the next frame to ensure the scene is loaded
+        yield return null;
 
         GameSession gameSession = FindObjectOfType<GameSession>();
         if (gameSession != null)
         {
-            Debug.Log("GameSession found.");
             gameSession.playerLives = PlayerPrefs.GetInt("PlayerLives");
             gameSession.score = PlayerPrefs.GetInt("ScoreValue");
             gameSession.EnableScoreText();
+            gameSession.highScoreText = highScoreText;
+            HighScoreManager.Instance.SetHighScoreText(highScoreText);
 
-            // Wait until the PlayerPos object is available in the scene
             PlayerPos playerPos = null;
-            Debug.Log("Looking for PlayerPos.");
             while (playerPos == null)
             {
-                yield return null; // Wait for the next frame to ensure all objects are initialized
+                yield return null;
                 playerPos = FindObjectOfType<PlayerPos>();
             }
 
-            if (playerPos != null)
-            {
-                Debug.Log("PlayerPos found, loading position...");
-                playerPos.LoadPos();
-            }
-            else
-            {
-                Debug.LogError("PlayerPos not found after multiple attempts.");
-            }
-
-            // Ensure enemy positions are loaded
+            playerPos?.LoadPos();
             EnemyManager.Instance?.LoadAllEnemyPositions();
         }
         else
@@ -124,13 +111,28 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("SaveGame method called.");
         PlayerPrefs.SetInt("playerStarted", 1);
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
-        PlayerPrefs.SetInt("PlayerLives", FindObjectOfType<GameSession>().playerLives);
-        PlayerPrefs.SetInt("ScoreValue", FindObjectOfType<GameSession>().score);
-        FindObjectOfType<PlayerPos>().SavePos();
+        GameSession gameSession = FindObjectOfType<GameSession>();
+        if (gameSession == null)
+        {
+            Debug.LogError("GameSession not found!");
+            return;
+        }
+        PlayerPrefs.SetInt("PlayerLives", gameSession.playerLives);
+        PlayerPrefs.SetInt("ScoreValue", gameSession.score);
+        PlayerPos playerPos = FindObjectOfType<PlayerPos>();
+        if (playerPos == null)
+        {
+            Debug.LogError("PlayerPos not found!");
+            return;
+        }
+        playerPos.SavePos();
         PlayerPrefs.Save();
+        Debug.Log("SaveGame method completed.");
     }
+
 
     public void Quit()
     {

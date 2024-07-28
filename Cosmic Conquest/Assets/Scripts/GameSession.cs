@@ -1,16 +1,16 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] public int playerLives = 3; // Number of player lives
+    [SerializeField] public int playerLives = 3;
     [SerializeField] public int score = 0;
     [SerializeField] public TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI highScoreText;
 
     void Awake()
     {
-        // Ensures that there is at most one game session running to keep track of player data
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -28,9 +28,9 @@ public class GameSession : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
-        else
+        if (highScoreText != null)
         {
-            Debug.LogWarning("ScoreText is not assigned!");
+            HighScoreManager.Instance.SetHighScoreText(highScoreText);
         }
     }
 
@@ -51,7 +51,6 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Resets game session when player runs out of lives
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
@@ -60,7 +59,12 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            HighScoreManager.Instance.CheckHighScore(score);
+            playerLives = 0;
+            if (HighScoreManager.Instance != null)
+            {
+                HighScoreManager.Instance.CheckHighScore(score);
+            }
+
             ResetGameSession();
         }
     }
@@ -83,10 +87,9 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Reduces player lives count when player dies, and resets them to the start of their current level
     void TakeLife()
     {
-        playerLives -= 1;
+        playerLives = Mathf.Max(0, playerLives - 1); // Ensure lives do not go below zero
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
@@ -99,17 +102,29 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Destroys current game session and reinitializes to the first level
-    void ResetGameSession()
+    public void ResetGameSession()
     {
-        HighScoreManager.Instance.CheckHighScore(score);
-        FindObjectOfType<ScenePersist>().ResetScenePersist();
-        Collectible.ResetAllCollectibles(); // Reset all collectibles
-        EnemyState.ResetAllEnemies(); // Reset enemy IDs
+        if (HighScoreManager.Instance != null)
+        {
+            HighScoreManager.Instance.CheckHighScore(score);
+        }
+
+        if (FindObjectOfType<ScenePersist>() != null)
+        {
+            FindObjectOfType<ScenePersist>().ResetScenePersist();
+        }
+
+        Collectible.ResetAllCollectibles();
+        EnemyState.ResetAllEnemies();
         PlayerPrefs.DeleteKey("SavedScene");
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("ScoreValue");
-        SceneManager.LoadSceneAsync(1);
+
+        // Resetting player lives and score
+        playerLives = 3;
+        score = 0;
+
+        SceneManager.LoadScene(1); // Assumes your first level is build index 1
         Destroy(gameObject);
     }
 }
