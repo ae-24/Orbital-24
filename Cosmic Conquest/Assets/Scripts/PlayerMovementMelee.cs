@@ -70,17 +70,17 @@ public class PlayerMovementMelee : MonoBehaviour
             timeBetweenAttack = startTimeBetweeenAttack;
             //Debug.Log("attackinggg");
             myAnimator.SetTrigger("Attacking");
-            Invoke("Attack", 0.7f);          
+            Invoke("Attack", 0.8f);          
         }
     }
 
     void Attack()
     {
-         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-         for (int i = 0; i < enemiesToDamage.Length; i++) {
+        myAnimator.SetTrigger("notAttacking");
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++) {
             enemiesToDamage[i].GetComponent<EnemyMovement>().TakeDamage(damage);
-         }
-         myAnimator.SetTrigger("notAttacking");
+        }
     }
 
     void OnDrawGizmosSelected() {
