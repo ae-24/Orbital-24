@@ -152,6 +152,7 @@ public class PlayerMovementMelee : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             mySpriteRenderer.color = new Color (2f,1f,1f);
+            myRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             Invoke("Death", 0.7f);
 
         }
@@ -159,7 +160,6 @@ public class PlayerMovementMelee : MonoBehaviour
 
     void Death() 
     {
-        myRigidBody.velocity = deathKick;
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 }
