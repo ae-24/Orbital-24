@@ -12,15 +12,6 @@ public class LevelExit : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            gameSession = FindObjectOfType<GameSession>();
-            if (gameSession == null)
-            {
-                Debug.LogError("GameSession not found!");
-                return;
-            }
-
-            gameSession.DisableScoreText();
-
             StartCoroutine(LoadNextLevel());
         }
     }
@@ -34,6 +25,8 @@ public class LevelExit : MonoBehaviour
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0;
+            gameSession = FindObjectOfType<GameSession>();
+            gameSession.DisableScoreText();
         }
 
         FindObjectOfType<ScenePersist>().ResetScenePersist();

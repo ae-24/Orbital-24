@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
         Application.OpenURL("about:blank");
     }
 }
