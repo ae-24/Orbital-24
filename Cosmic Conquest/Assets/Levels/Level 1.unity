@@ -283,17 +283,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed44b03f9df3bf447b8abd2c79e42283, type: 3}
---- !u!114 &337680270 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3519980075597587619, guid: f6aeb82465c20bf4da93e3ec51703937, type: 3}
-  m_PrefabInstance: {fileID: 1744200921}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f72deb064b02a4ea4403909e6d4ea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &338689557
 GameObject:
   m_ObjectHideFlags: 0
@@ -21494,10 +21483,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6080509448626416085, guid: f8f22b46d56bf844db73cba64c5a45fd, type: 3}
-      propertyPath: gameSession
-      value: 
-      objectReference: {fileID: 337680270}
     - target: {fileID: 6080509448626416091, guid: f8f22b46d56bf844db73cba64c5a45fd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -21585,10 +21570,6 @@ PrefabInstance:
     - target: {fileID: 6080509448626416095, guid: f8f22b46d56bf844db73cba64c5a45fd, type: 3}
       propertyPath: m_Name
       value: Health and Pause UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6080509448626416095, guid: f8f22b46d56bf844db73cba64c5a45fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8f22b46d56bf844db73cba64c5a45fd, type: 3}

@@ -91,8 +91,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
-        Application.OpenURL("about:blank");
+        GameManager.Instance.Quit();
     }
 
     private void DestroyPersistentObjects()

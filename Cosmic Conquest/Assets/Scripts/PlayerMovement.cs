@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    [SerializeField] AudioClip bulletSFX;
+    //[SerializeField] AudioClip walkingSFX;
 
     float gravityScaleAtStart;
     bool isAlive = true;
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
     SpriteRenderer mySpriteRenderer;
+    AudioSource bulletSound;
+    //AudioSource walkingSound;
     private LimitedVisionManager limitedVisionManager;
 
     void Start()
@@ -33,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         gravityScaleAtStart = myRigidBody.gravityScale;
 
         limitedVisionManager = FindObjectOfType<LimitedVisionManager>();
+        //walkingSound = gameObject.AddComponent<AudioSource>();
+        bulletSound = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +56,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!isAlive) { return; }
             myAnimator.SetTrigger("Shooting");
+            if (bulletSound != null)
+            {
+                bulletSound.PlayOneShot(bulletSFX, 1f);
+            }
             Invoke("ShootBullet", 0.3f);
         }
     }
@@ -84,6 +94,20 @@ public class PlayerMovement : MonoBehaviour
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+
+        /*
+        if (playerHasHorizontalSpeed)
+        {
+            if (!walkingSound.isPlaying)
+            {
+                walkingSound.PlayOneShot(walkingSFX, 1f);
+            }
+        }
+        else
+        {
+            walkingSound.Stop();
+        }
+        */
     }
 
     void FlipSprite()
