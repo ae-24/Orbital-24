@@ -136,9 +136,9 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Quit");
+        //Debug.Log("Quit");
         Application.OpenURL("about:blank");
         Application.Quit();
-        //UnityEditor.EditorApplication.isPlaying = false;
+        
     }
 }
